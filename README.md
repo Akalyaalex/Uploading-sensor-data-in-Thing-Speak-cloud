@@ -59,13 +59,36 @@ Automatically act on your data and communicate using third-party services like T
 
 ![image](https://user-images.githubusercontent.com/71547910/235334056-3ba9579f-2f62-43b1-a714-8fde6cf9ef32.png)
 
-
 # PROGRAM:
+```
+const int trigPin = 9;
+const int echoPin = 10;
 
+long duration;
+int distance;
+void setup() {
+pinMode(trigPin, OUTPUT);
+pinMode(echoPin, INPUT);
+Serial.begin(9600);
+}
+
+void loop() 
+{
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  duration = pulseIn(echoPin, HIGH);
+  distance= duration*0.034/2;
+  Serial.print("Distance: ");
+  Serial.println(distance);
+}
+```
 # CIRCUIT DIAGRAM:
-
+![image](https://github.com/Akalyaalex/Uploading-sensor-data-in-Thing-Speak-cloud/assets/114275126/a91ba9cf-5f40-461f-907d-70e6353fb40f)
 # OUTPUT:
-
+![image](https://github.com/Akalyaalex/Uploading-sensor-data-in-Thing-Speak-cloud/assets/114275126/23a39012-2c5c-4523-b22f-3ba4d4039642)
 # RESULT:
 Thus the distance of the obstacle was monitored using Ultrasonic sensor and the distance values are uploaded in the Thing speak using ESP32 controller.
 
